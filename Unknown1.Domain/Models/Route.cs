@@ -13,7 +13,10 @@ namespace Unknown1.Domain.Models
         public DateTime UpdatedAt { get; set; }
         [Required]
         public decimal Price { get; set; }
-        public decimal Discount { get; set; }
+        public decimal Discount { get; set; } = decimal.Zero;
         public decimal TotalPrice { get; set; }
+
+        // Navigation Property
+        public List<UserRoute> UserRoutes { get; set; } = [];
     }
 }

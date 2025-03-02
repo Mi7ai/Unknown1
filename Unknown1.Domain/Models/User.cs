@@ -13,5 +13,8 @@ namespace Unknown1.Domain.Models
         public string? Email { get; set; }
         [Required]
         public Phone? Phone { get; set; }
+
+        // Navigation Property
+        public List<UserRoute> UserRoutes { get; set; } = [];
     }
 }
