@@ -15,6 +15,6 @@ namespace Unknown1.Domain.Models
         public Phone? Phone { get; set; }
 
         // Navigation Property
-        public List<UserRoute> UserRoutes { get; set; } = new List<UserRoute>();
+        public ICollection<UserRoute> UserRoutes { get; set; } = new List<UserRoute>();
     }
 }

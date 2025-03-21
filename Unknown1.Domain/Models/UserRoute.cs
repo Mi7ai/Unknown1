@@ -1,11 +1,12 @@
 //UserRoute
 //This tracks who worked on which route and how much of the route they completed.
-using Unknown1.Domain.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Unknown1.Domain.Models
 {
     public class UserRoute
     {
+        [Key]
         public int UserRouteId { get; set; }
 
         // Foreign Keys
