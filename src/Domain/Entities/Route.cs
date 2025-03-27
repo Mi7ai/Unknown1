@@ -1,6 +1,6 @@
 ﻿    using System.ComponentModel.DataAnnotations;
 
-    namespace Unknown1.Domain.Models
+    namespace Domain.Entities
     {
         public class Route
         {

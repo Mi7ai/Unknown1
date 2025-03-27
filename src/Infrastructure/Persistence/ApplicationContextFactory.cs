@@ -8,7 +8,7 @@ public class ApplicationContextFactory : IDesignTimeDbContextFactory<Application
     public ApplicationDataContext CreateDbContext(string[] args)
     {
          // Get the API project path
-        var basePath = Path.Combine(Directory.GetCurrentDirectory(), "../Unknown1.Api");
+        var basePath = Path.Combine(Directory.GetCurrentDirectory(), "../Api");
 
         var configuration = new ConfigurationBuilder()
             .SetBasePath(basePath)

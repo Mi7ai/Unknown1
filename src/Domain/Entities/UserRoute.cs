@@ -2,7 +2,7 @@
 //This tracks who worked on which route and how much of the route they completed.
 using System.ComponentModel.DataAnnotations;
 
-namespace Unknown1.Domain.Models
+namespace Domain.Entities
 {
     public class UserRoute
     {

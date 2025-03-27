@@ -34,7 +34,7 @@ namespace Unknown1.Dal.Migrations
 
                     b.HasKey("PhoneId");
 
-                    b.ToTable("Phone");
+                    b.ToTable("Phone", (string)null);
                 });
 
             modelBuilder.Entity("Unknown1.Domain.Models.Route", b =>
@@ -70,7 +70,7 @@ namespace Unknown1.Dal.Migrations
 
                     b.HasKey("RouteId");
 
-                    b.ToTable("Routes");
+                    b.ToTable("Routes", (string)null);
                 });
 
             modelBuilder.Entity("Unknown1.Domain.Models.User", b =>
@@ -100,7 +100,7 @@ namespace Unknown1.Dal.Migrations
 
                     b.HasIndex("PhoneId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Unknown1.Domain.Models.UserRoute", b =>
@@ -135,7 +135,7 @@ namespace Unknown1.Dal.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserRoutes");
+                    b.ToTable("UserRoutes", (string)null);
                 });
 
             modelBuilder.Entity("Unknown1.Domain.Models.User", b =>
