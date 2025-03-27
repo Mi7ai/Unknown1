@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Unknown1.Dal.Migrations
 {
     [DbContext(typeof(ApplicationDataContext))]
-    partial class ApplicationDataContextModelSnapshot : ModelSnapshot
+    [Migration("20250327102522_ChangePhoneNumberType")]
+    partial class ChangePhoneNumberType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,7 +38,7 @@ namespace Unknown1.Dal.Migrations
 
                     b.HasKey("PhoneId");
 
-                    b.ToTable("Phone", (string)null);
+                    b.ToTable("Phone");
                 });
 
             modelBuilder.Entity("Domain.Entities.Route", b =>
@@ -71,7 +74,7 @@ namespace Unknown1.Dal.Migrations
 
                     b.HasKey("RouteId");
 
-                    b.ToTable("Routes", (string)null);
+                    b.ToTable("Routes");
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
@@ -101,7 +104,7 @@ namespace Unknown1.Dal.Migrations
 
                     b.HasIndex("PhoneId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Domain.Entities.UserRoute", b =>
@@ -136,7 +139,7 @@ namespace Unknown1.Dal.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserRoutes", (string)null);
+                    b.ToTable("UserRoutes");
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
