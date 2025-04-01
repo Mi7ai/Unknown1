@@ -1,6 +1,6 @@
 using Domain.Entities;
 
-namespace Application.Interfaces
+namespace Application.Interfaces.Repositories
 {
     public interface IUserRepository
     {
@@ -10,10 +10,10 @@ namespace Application.Interfaces
         // Task<User?> GetUserByEmailAsync(string userEmail);
         // Task<User?> GetUserByPhoneIdAsync(int userPhoneId);
         // Task<User?> GetUserByPhoneNumberAsync(string userPhoneNumber);
-        Task<User?> GetUserByIdAsync(int userId);
+        Task<User?> GetUserByIdAsync(int userId, CancellationToken cancellationToken);
         IQueryable<User> GetAllUsers();
-        Task<User> AddUserAsync(User user);
-        Task<User?> UpdateUserAsync(User user);
-        Task<User?> DeleteUserAsync(User user);
+        Task<User> AddUserAsync(User user, CancellationToken cancellationToken);
+        Task<User?> UpdateUserAsync(User user, CancellationToken cancellationToken);
+        Task<User?> DeleteUserAsync(User user, CancellationToken cancellationToken);
     }
 }

@@ -1,3 +1,4 @@
+using Application.Mapping;
 using Microsoft.EntityFrameworkCore;
  
 var builder = WebApplication.CreateBuilder(args);
@@ -9,10 +10,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// ----------------------------------------
 
+// Configure Database Connection
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDataContext>(options => options.UseNpgsql(connectionString));
 
+// Configure Automapper
+builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+
+//----------------------------------------
 
 var app = builder.Build();
 
