@@ -1,4 +1,4 @@
-using Application.Interfaces;
+using Application.Interfaces.Repositories;
 using Domain.Entities;
 
 namespace Infrastructure.Repositories
@@ -7,17 +7,17 @@ namespace Infrastructure.Repositories
     {
         private readonly ApplicationDataContext _context = context;
 
-        public async Task<User> AddUserAsync(User user)
+        public async Task<User> AddUserAsync(User user, CancellationToken cancellationToken)
         {
             _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
             return user;
         }
 
-        public async Task<User?> DeleteUserAsync(User user)
+        public async Task<User?> DeleteUserAsync(User user, CancellationToken cancellationToken)
         {
             _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
             return user;
         }
 
@@ -32,9 +32,9 @@ namespace Infrastructure.Repositories
         //     return await _context.Users.FirstOrDefaultAsync(u => u.Email == userEmail);
         // }
 
-        public async Task<User?> GetUserByIdAsync(int userId)
+        public async Task<User?> GetUserByIdAsync(int userId, CancellationToken cancellationToken)
         {
-            return await _context.Users.FindAsync(userId);
+            return await _context.Users.FindAsync([userId], cancellationToken);
         }
 
         // public async Task<User?> GetUserByNameAsync(string userName)
@@ -61,10 +61,10 @@ namespace Infrastructure.Repositories
         //     return await _context.Users.FirstOrDefaultAsync(u => u.Surname == userSurname);
         // }
 
-        public async Task<User?> UpdateUserAsync(User user)
+        public async Task<User?> UpdateUserAsync(User user, CancellationToken cancellationToken)
         {
             _context.Users.Update(user);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
             return user;
         }
     }
