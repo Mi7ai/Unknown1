@@ -1,5 +1,6 @@
 using Application.Interfaces.Repositories;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
@@ -34,7 +35,7 @@ namespace Infrastructure.Repositories
 
         public async Task<User?> GetUserByIdAsync(int userId, CancellationToken cancellationToken)
         {
-            return await _context.Users.FindAsync([userId], cancellationToken);
+            return await _context.Users.Include(u => u.Phone).FirstOrDefaultAsync(u => u.UserId == userId, cancellationToken);
         }
 
         // public async Task<User?> GetUserByNameAsync(string userName)
