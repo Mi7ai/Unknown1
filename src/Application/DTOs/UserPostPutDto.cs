@@ -18,6 +18,6 @@ namespace Application.DTOs
 
         [Required]
         [RegularExpression(@"\S+", ErrorMessage = "Phone cannot be empty or whitespace.")]
-        public string? Phone { get; set; } = string.Empty;
+        public string? Number { get; set; }
     }
 }

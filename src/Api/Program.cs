@@ -1,4 +1,8 @@
+using Application.Interfaces.Repositories;
+using Application.Interfaces.Services;
 using Application.Mapping;
+using Infrastructure.Repositories;
+using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
  
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +23,9 @@ builder.Services.AddDbContext<ApplicationDataContext>(options => options.UseNpgs
 // Configure Automapper
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
+//Configure Dependency Injection
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 //----------------------------------------
 
 var app = builder.Build();

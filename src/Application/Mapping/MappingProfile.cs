@@ -9,7 +9,9 @@ namespace Application.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<UserPostPutDto, User>();
+            CreateMap<UserPostPutDto, User>().ForMember(dest => dest.Phone, opt => opt.MapFrom(src =>
+            string.IsNullOrEmpty(src.Number) ? null : new Phone { Number = src.Number }))
+            .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null)); ;
 
 
             /* dest => dest.PhoneNumber: This is the target (UserDto.PhoneNumber).
