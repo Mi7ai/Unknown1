@@ -26,6 +26,11 @@ public class ApplicationDataContext : DbContext
             .HasOne(ur => ur.Route)
             .WithMany(r => r.UserRoutes)
             .HasForeignKey(ur => ur.RouteId);
+
+        modelBuilder.Entity<User>()
+            .HasOne(u => u.Phone)
+            .WithOne(p => p.User)
+            .HasForeignKey<Phone>(p => p.UserId)
+            .OnDelete(DeleteBehavior.Cascade); // 👈 this is the magic line
     }
 }
-   

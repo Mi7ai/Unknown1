@@ -21,14 +21,23 @@ namespace Infrastructure.Services
         }
         public async Task<Result<UserDto>> AddUserAsync(UserPostPutDto userDto, CancellationToken cancellationToken = default)
         {
+            // Check payload
             if (userDto == null)
             {
                 return Result<UserDto>.Fail("User data is null.");
             }
-            
+
+            // Check PhoneDto is present
+            if (userDto.Phone == null)
+            {
+                return Result<UserDto>.Fail("Phone information is required.");
+            }
+
             try
             {
                 var user = _mapper.Map<User>(userDto);
+                user.Phone = _mapper.Map<Phone>(userDto.Phone);
+
                 await _userRepository.AddUserAsync(user, cancellationToken);
                 return Result<UserDto>.Ok(_mapper.Map<UserDto>(user));
             }
@@ -75,6 +84,16 @@ namespace Infrastructure.Services
                 return Result<UserDto>.Fail("User not found.");
             }
             _mapper.Map(userDto, existingUser);
+
+            if (existingUser.Phone != null)
+            {
+                _mapper.Map(userDto.Phone, existingUser.Phone);
+            }
+            else
+            {
+                existingUser.Phone = _mapper.Map<Phone>(userDto.Phone);
+            }
+
             await _userRepository.UpdateUserAsync(existingUser, cancellationToken);
             return Result<UserDto>.Ok(_mapper.Map<UserDto>(existingUser));
         }
