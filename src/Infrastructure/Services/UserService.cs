@@ -61,7 +61,7 @@ namespace Infrastructure.Services
 
         public async Task<Result<List<UserDto>>> GetAllUsersAsync(CancellationToken cancellationToken = default)
         {
-            var query = _userRepository.GetAllUsers();
+            var query = _userRepository.GetAllUsers().Include(u => u.Phone);
             var users = await query.ToListAsync(cancellationToken);
             return Result<List<UserDto>>.Ok(_mapper.Map<List<UserDto>>(users));
         }
