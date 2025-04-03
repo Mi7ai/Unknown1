@@ -16,8 +16,10 @@ namespace Application.DTOs
         [RegularExpression(@"\S+", ErrorMessage = "Email cannot be empty or whitespace.")]
         public string? Email { get; set; } = string.Empty;
 
+        public int PhoneId { get; set; }
+
         [Required]
         [RegularExpression(@"\S+", ErrorMessage = "Phone cannot be empty or whitespace.")]
-        public string? Phone { get; set; } = string.Empty;
+        public PhoneDto? Phone { get; set; } 
     }
 }
