@@ -20,6 +20,6 @@ namespace Application.DTOs
 
         [Required]
         [RegularExpression(@"\S+", ErrorMessage = "Phone cannot be empty or whitespace.")]
-        public PhoneDto? Phone { get; set; } 
+        public PhoneDto? Phone { get; set; }
     }
 }

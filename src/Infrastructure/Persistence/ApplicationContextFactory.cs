@@ -1,25 +1,27 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using System.IO;
 
-public class ApplicationContextFactory : IDesignTimeDbContextFactory<ApplicationDataContext>
+namespace Infrastructure.Persistence
 {
-    public ApplicationDataContext CreateDbContext(string[] args)
+    public class ApplicationContextFactory : IDesignTimeDbContextFactory<ApplicationDataContext>
     {
-         // Get the API project path
-        var basePath = Path.Combine(Directory.GetCurrentDirectory(), "../Api");
+        public ApplicationDataContext CreateDbContext(string[] args)
+        {
+            // Get the API project path
+            var basePath = Path.Combine(Directory.GetCurrentDirectory(), "../Api");
 
-        var configuration = new ConfigurationBuilder()
-            .SetBasePath(basePath)
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .Build();
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(basePath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .Build();
 
-        var optionsBuilder = new DbContextOptionsBuilder<ApplicationDataContext>();
-        var connectionString = configuration.GetConnectionString("DefaultConnection");
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDataContext>();
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-        optionsBuilder.UseNpgsql(connectionString);
+            optionsBuilder.UseNpgsql(connectionString);
 
-        return new ApplicationDataContext(optionsBuilder.Options);
+            return new ApplicationDataContext(optionsBuilder.Options);
+        }
     }
 }

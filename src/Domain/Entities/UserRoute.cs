@@ -1,9 +1,8 @@
-//UserRoute
-//This tracks who worked on which route and how much of the route they completed.
 using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities
 {
+    //This tracks who worked on which route and how much of the route they completed.
     public class UserRoute
     {
         [Key]

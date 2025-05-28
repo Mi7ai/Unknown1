@@ -1,6 +1,5 @@
 using Application.Common.Models;
 using Application.DTOs;
-using System.Threading;
 
 namespace Application.Interfaces.Services
 {
